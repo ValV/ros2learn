@@ -1,6 +1,8 @@
 [submodule "algorithms/baselines"]
     path = algorithms/baselines
     url = https://github.com/ValV/baselines.git
+    branch = dashing
 [submodule "environments/gym-gazebo2"]
     path = environments/gym-gazebo2
     url = https://github.com/ValV/gym-gazebo2.git
+    branch = dashing
