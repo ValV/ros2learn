@@ -26,9 +26,7 @@ RUN \
         build-essential \
         cmake \
         git \
-        python3-colcon-common-extensions \
         python3-pip \
-        python3-vcstool \
         vim \
         wget \
       && pip3 install \
@@ -56,6 +54,7 @@ RUN \
         ros-$ROS2_DISTRO-launch-testing-ament-cmake \
         ros-$ROS2_DISTRO-rclcpp-action \
         ros-$ROS2_DISTRO-rmw-implementation \
+        ros-$ROS2_DISTRO-rmw-fastrtps-cpp \
         ros-$ROS2_DISTRO-rmw-opensplice-cpp \
         ros-$ROS2_DISTRO-cv-bridge \
         ros-$ROS2_DISTRO-control-msgs \
@@ -76,7 +75,7 @@ RUN \
       && hrim generate models/actuator/gripper/gripper.xml \
       # Compile the workspace
       && bash -c " cd /root/ros2_mara_ws \
-      && source /opt/ros/dashing/setup.bash && colcon build --merge-install --parallel-workers $(nproc) --packages-ignore orocos_kinematics_dynamics individual_trajectories_bridge \
+      && source /opt/ros/dashing/setup.bash && colcon build --merge-install --parallel-workers $(nproc) --packages-ignore orocos_kinematics_dynamics individual_trajectories_bridge --allow-overriding orocos_kdl \
       && touch /root/ros2_mara_ws/install/share/orocos_kdl/local_setup.sh /root/ros2_mara_ws/install/share/orocos_kdl/local_setup.bash \
       && cd /root && git clone -b v0.21.0 https://github.com/openai/gym && cd /root/gym && pip3 install -e . \
       # Setup ros2learn
