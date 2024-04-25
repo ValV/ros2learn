@@ -2,7 +2,9 @@
 
 ## Pull container from docker hub
 
-WIP
+```shell
+docker pull valv/ros2learn:dashing
+```
 
 ## Build the container
 
